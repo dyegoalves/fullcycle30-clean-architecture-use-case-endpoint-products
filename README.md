@@ -7,15 +7,18 @@ Base: continuidade do desafio de use cases da entidade `Product`, a partir do re
 
 ## Endpoint
 
-| Método | Rota       | Descrição                          | Resposta         |
-| ------ | ---------- | ---------------------------------- | ---------------- |
-| GET    | `/product` | Lista os produtos cadastrados      | `200` + JSON     |
-| POST   | `/product` | Cria um produto (`name`, `price`)  | `200` + JSON     |
+| Método | Rota         | Descrição                           | Resposta       |
+| ------- | ------------ | ------------------------------------- | -------------- |
+| GET     | `/product` | Lista os produtos cadastrados         | `200` + JSON |
+| POST    | `/product` | Cria um produto (`name`, `price`) | `200` + JSON |
 
 Para popular e depois listar:
 
 ```bash
+# Criar um produto
 curl -X POST http://localhost:3000/product -H 'Content-Type: application/json' -d '{"name":"Product 1","price":10}'
+
+# Listar um produto
 curl http://localhost:3000/product
 ```
 
