@@ -2,7 +2,7 @@
 
 Camada de API (Web) para a entidade `Product`: endpoint `GET /product` que expõe o use case `ListProduct`, no padrão da entidade `Customer`.
 
-Base: continuidade do desafio de use cases da entidade `Product`, a partir do repositório
+Base: continuidade do **primeiro desafio** (use cases da entidade `Product`), a partir do repositório
 [dyegoalves/fullcycle30-clean-architecture-use-case](https://github.com/dyegoalves/fullcycle30-clean-architecture-use-case) (mesma estrutura do template oficial [devfullcycle/fc-clean-architecture](https://github.com/devfullcycle/fc-clean-architecture.git)).
 
 ## Endpoint

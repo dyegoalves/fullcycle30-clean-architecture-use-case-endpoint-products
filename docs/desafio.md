@@ -15,7 +15,7 @@ Implementar a camada de API (Web) para a entidade **Product**. Assim como demons
 Utilizar o código base do curso (ou a continuidade dos desafios anteriores):
 
 - Template oficial: https://github.com/devfullcycle/fc-clean-architecture.git
-- Base própria (mesma estrutura do template): https://github.com/dyegoalves/fullcycle30-clean-architecture-use-case
+- Base própria — primeiro desafio (use cases da entidade `Product`): https://github.com/dyegoalves/fullcycle30-clean-architecture-use-case
 
 ## Requisitos Técnicos
 
