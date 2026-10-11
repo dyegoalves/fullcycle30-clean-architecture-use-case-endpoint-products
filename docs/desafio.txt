@@ -1,0 +1,43 @@
+Título: Clean Architecture: API de Listagem de Produtos
+
+Objetivo Neste desafio, você deve implementar a camada de API (Web) para a entidade Product. Assim como demonstrado em aula com a entidade Customer, seu objetivo é criar um endpoint que exponha o caso de uso de listagem de produtos, permitindo acesso via requisições HTTP.
+
+Tecnologias e Ferramentas
+
+Linguagem: TypeScript
+
+Testes: End-to-End (E2E)
+
+Base do Projeto: Repositório Template (Obrigatório)
+
+Estrutura Base (Obrigatória) Para realizar este desafio, é obrigatório utilizar o código base disponibilizado pelo curso (ou a continuidade dos desafios anteriores).
+
+https://github.com/devfullcycle/fc-clean-architecture.git
+
+Requisitos Técnicos
+
+Endpoint: Crie uma rota (ex: GET /product) na API.
+
+Integração: Essa rota deve chamar o Use Case ListProduct (criado no desafio anterior).
+
+Resposta: A API deve retornar um JSON contendo a lista de produtos cadastrados e o status code apropriado (200).
+
+Requisitos de Testes (Obrigatório)
+Teste End-to-End (E2E): É indispensável a criação de um teste automatizado que verifique o fluxo completo da API.
+
+O teste deve simular uma requisição HTTP real para a rota criada.
+Deve validar se o status code retornado é 200.
+Deve validar se o corpo da resposta (body) contém os dados esperados (XML/JSON de produtos).
+Entregável
+
+Link do Repositório: O link para o seu repositório no GitHub contendo a implementação.
+
+README: Instruções de como rodar a API e os testes E2E.
+
+Regras de Entrega
+
+Repositório Único: É obrigatória a entrega de apenas um projeto por repositório.
+
+Branch Principal: Todo o código deve estar na branch main.
+
+Base Obrigatória: Projetos que não seguirem a estrutura base não serão aceitos.
