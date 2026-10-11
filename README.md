@@ -1,31 +1,69 @@
-# Desafio — Clean Architecture: Use Cases para a Entidade Product
+# Desafio — Clean Architecture: API de Listagem de Produtos
 
-Implementação dos 4 use cases da entidade `Product` (Create, Find, List, Update), seguindo o padrão da entidade `Customer`, com testes de unidade e de integração para cada use case.
+Camada de API (Web) para a entidade `Product`: endpoint `GET /product` que expõe o use case `ListProduct`, no padrão da entidade `Customer`.
 
-Base: [devfullcycle/fc-clean-architecture](https://github.com/devfullcycle/fc-clean-architecture.git)
+Base: continuidade do desafio de use cases da entidade `Product`, a partir do repositório
+[dyegoalves/fullcycle30-clean-architecture-use-case](https://github.com/dyegoalves/fullcycle30-clean-architecture-use-case) (mesma estrutura do template oficial [devfullcycle/fc-clean-architecture](https://github.com/devfullcycle/fc-clean-architecture.git)).
+
+## Endpoint
+
+| Método | Rota       | Descrição                          | Resposta         |
+| ------ | ---------- | ---------------------------------- | ---------------- |
+| GET    | `/product` | Lista os produtos cadastrados      | `200` + JSON     |
+| POST   | `/product` | Cria um produto (`name`, `price`)  | `200` + JSON     |
+
+Para popular e depois listar:
+
+```bash
+curl -X POST http://localhost:3000/product -H 'Content-Type: application/json' -d '{"name":"Product 1","price":10}'
+curl http://localhost:3000/product
+```
+
+Resposta (JSON) do `GET`:
+
+```json
+{
+  "products": [
+    { "id": "123", "name": "Product 1", "price": 10 },
+    { "id": "456", "name": "Product 2", "price": 20 }
+  ]
+}
+```
 
 ## Estrutura
 
 ```
-src/usecase/product/
-├── create/   create.product.dto.ts  create.product.usecase.ts  create.product.unit.spec.ts  create.product.integration.spec.ts
-├── find/     find.product.dto.ts    find.product.usecase.ts    find.product.unit.spec.ts    find.product.integration.spec.ts
-├── list/     list.product.dto.ts    list.product.usecase.ts    list.product.unit.spec.ts    list.product.integration.spec.ts
-└── update/   update.product.dto.ts  update.product.usecase.ts  update.product.unit.spec.ts  update.product.integration.spec.ts
+src/infrastructure/api/routes/product.route.ts              # rota GET /product -> ListProductUseCase
+src/infrastructure/api/presenters/customer.presenter.ts     # presenter (customer, usado no formato XML)
+src/infrastructure/api/express.ts                           # registra modelos (Customer, Product) e rotas
+src/infrastructure/api/__tests__/product.e2e.spec.ts        # teste E2E (supertest)
 ```
 
-- **Unit**: use case isolado, repositório mockado (Jest).
-- **Integration**: repositório Sequelize real com SQLite em memória.
+O repositório também contém os use cases da entidade `Product` (Create, Find, List, Update), com testes de unidade e integração — continuidade dos desafios anteriores.
 
 ## Como rodar
 
 ```bash
 npm install
-npm test          # typecheck (tsc --noEmit) + testes com cobertura (100% nos use cases)
+npm run dev        # sobe a API em http://localhost:3000
 ```
 
-Somente os testes do Product:
+Requisição de exemplo:
 
 ```bash
-npx jest src/usecase/product
+curl http://localhost:3000/product
 ```
+
+## Como rodar os testes
+
+```bash
+npm test           # typecheck (tsc --noEmit) + testes com cobertura
+```
+
+Somente o teste E2E do Product:
+
+```bash
+npx jest src/infrastructure/api/__tests__/product.e2e.spec.ts
+```
+
+O teste E2E usa SQLite em memória, insere produtos e valida `status 200` e o corpo da resposta.
